@@ -1,9 +1,24 @@
-body {background-color: blue;}
+body {background-color: #8C6436;}
 
 main {
-    background-color: bisque;
+    background-color: #2D3845;
     max-width: 1140px;
     margin: 0 auto;
+}
+
+h1, th, li {
+    color: white;
+}
+
+body {
+    text-align: center;
+    line-height: 170%;;
+}
+
+table {
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 li {
