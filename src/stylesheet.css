@@ -1,4 +1,6 @@
-body {background-color: #8C6436;}
+body {
+    background-color: #8C6436;
+}
 
 main {
     background-color: #2D3845;
@@ -7,7 +9,10 @@ main {
     padding-bottom: 1%;
 }
 
-h1, th, li, p {
+h1,
+th,
+li,
+p {
     color: white;
 }
 
@@ -36,21 +41,23 @@ li {
     list-style-type: none;
 }
 
-td, th {
+td,
+th {
     border: 3px solid #dddddd;
     text-align: left;
     padding: 20px;
     font-size: 120%;
-  }
+}
 
-  th {
+th {
     font-size: 120%;
-  }
+}
 
-  #search {
+#search {
     width: 30%;
-  }
+}
 
-  #search, input{
+#search,
+input {
     padding: 1%;
-  }
+}
