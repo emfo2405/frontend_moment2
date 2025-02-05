@@ -5,3 +5,14 @@ main {
     max-width: 1140px;
     margin: 0 auto;
 }
+
+li {
+    list-style-type: none;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 20px;
+
+  }

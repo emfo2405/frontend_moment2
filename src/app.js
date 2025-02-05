@@ -20,9 +20,7 @@ courses = await response.json();
 //Kör funktioner för att skriva ut data
 printCourses(courses);
 
-//Skriver ut datan som en tabell i konsollen
-        console.table(courses);
-
+console.table(courses);
         //Felmeddelande om något går fel
     } catch (error) {
         console.error(error);
@@ -30,10 +28,11 @@ printCourses(courses);
     }
 }
 
-function printCourses(data) {
     const codeEl = document.querySelector("#kurskod");
     const courseEl = document.querySelector("#kursnamn");
     const progressionEl = document.querySelector("#progression");
+
+function printCourses(data) {
 
     //Rensa DOM
     codeEl.innerHTML = "";
@@ -50,10 +49,52 @@ function printCourses(data) {
     })
 
     courses.forEach (course => {
-        progressionEl.innerHTML += `<li>${course.progression}</li>`;
+        progressionEl.innerHTML += `<li class="sortprogression" >${course.progression}</li>`;
     })
 
 
+}
 
+const search = document.querySelector("#search");
+
+//Sökfunktion
+search.onclick = () => {
+    document.querySelector("#search"), addEventListener("input", filterCourses);
+    printChange(courses);
+}
+
+function filterCourses() {
+    let searchInput = document.querySelector("#search").value;
+    let filteredCourses = courses.filter((course) => 
+    course.code.toLowerCase().includes(searchInput)  ||
+    course.coursename.toLowerCase().includes(searchInput)  ||
+    course.progression.toLowerCase().includes(searchInput)
+    );
+    printChange(filteredCourses);
+}
+
+function printChange(courses) {
+    const codeEl = document.querySelector("#kurskod");
+    const courseEl = document.querySelector("#kursnamn");
+    const progressionEl = document.querySelector("#progression");
+
+    codeEl.innerHTML = "";
+    courseEl.innerHTML = "";
+   progressionEl.innerHTML = "";
+
+   courses.forEach (course => {
+    codeEl.innerHTML += `<li>${course.code}</li>`;
+})
+
+courses.forEach (course => {
+    courseEl.innerHTML += `<li>${course.coursename}</li>`;
+})
+
+courses.forEach (course => {
+    progressionEl.innerHTML += `<li>${course.progression}</li>`;
+})
 
 }
+
+
+
