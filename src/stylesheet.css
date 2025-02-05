@@ -4,15 +4,26 @@ main {
     background-color: #2D3845;
     max-width: 1140px;
     margin: 0 auto;
+    padding-bottom: 1%;
 }
 
-h1, th, li {
+h1, th, li, p {
     color: white;
+}
+
+h1 {
+    font-size: 250%;
+    padding: 3%;
+}
+
+p {
+    font-size: 130%;
 }
 
 body {
     text-align: center;
-    line-height: 170%;;
+    line-height: 190%;
+    font-family: Garamond, serif;
 }
 
 table {
@@ -26,8 +37,20 @@ li {
 }
 
 td, th {
-    border: 1px solid #dddddd;
+    border: 3px solid #dddddd;
     text-align: left;
     padding: 20px;
+    font-size: 120%;
+  }
 
+  th {
+    font-size: 120%;
+  }
+
+  #search {
+    width: 30%;
+  }
+
+  #search, input{
+    padding: 1%;
   }

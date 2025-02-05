@@ -9,18 +9,18 @@ async function fetchCourseData() {
     try {
         //Hämtar in data
         const response = await fetch('https://webbutveckling.miun.se/files/ramschema_ht24.json');
-//Felmeddelande om datan inte läses in korrekt
-if (!response.ok) {
-    throw new Error("Fel vid anslutning till data...");
-}
+        //Felmeddelande om datan inte läses in korrekt
+        if (!response.ok) {
+            throw new Error("Fel vid anslutning till data...");
+        }
 
-//sparar datan till den tomma arrayen
-courses = await response.json();
+        //sparar datan till den tomma arrayen
+        courses = await response.json();
 
-//Kör funktioner för att skriva ut data
-printCourses(courses);
+        //Kör funktioner för att skriva ut data
+        printCourses(courses);
 
-console.table(courses);
+        console.table(courses);
         //Felmeddelande om något går fel
     } catch (error) {
         console.error(error);
@@ -28,27 +28,27 @@ console.table(courses);
     }
 }
 
-    const codeEl = document.querySelector("#kurskod");
-    const courseEl = document.querySelector("#kursnamn");
-    const progressionEl = document.querySelector("#progression");
+const codeEl = document.querySelector("#kurskod");
+const courseEl = document.querySelector("#kursnamn");
+const progressionEl = document.querySelector("#progression");
 
 function printCourses(data) {
 
     //Rensa DOM
     codeEl.innerHTML = "";
     courseEl.innerHTML = "";
-   progressionEl.innerHTML = "";
+    progressionEl.innerHTML = "";
 
     //Filtrera kurskod, kursnamn och progression
-    courses.forEach (course => {
+    courses.forEach(course => {
         codeEl.innerHTML += `<li>${course.code}</li>`;
     })
 
-    courses.forEach (course => {
+    courses.forEach(course => {
         courseEl.innerHTML += `<li>${course.coursename}</li>`;
     })
 
-    courses.forEach (course => {
+    courses.forEach(course => {
         progressionEl.innerHTML += `<li class="sortprogression" >${course.progression}</li>`;
     })
 
@@ -68,10 +68,10 @@ search.onclick = () => {
 //Funktion som filtrerar kurser baserat på vad som skrivs in i sökrutan
 function filterCourses() {
     let searchInput = document.querySelector("#search").value;
-    let filteredCourses = courses.filter((course) => 
-    course.code.toLowerCase().includes(searchInput)  ||
-    course.coursename.toLowerCase().includes(searchInput)  ||
-    course.progression.toLowerCase().includes(searchInput)
+    let filteredCourses = courses.filter((course) =>
+        course.code.toLowerCase().includes(searchInput) ||
+        course.coursename.toLowerCase().includes(searchInput) ||
+        course.progression.toLowerCase().includes(searchInput)
     );
     printChange(filteredCourses);
 }
@@ -84,22 +84,22 @@ function printChange(courses) {
 
     codeEl.innerHTML = "";
     courseEl.innerHTML = "";
-   progressionEl.innerHTML = "";
+    progressionEl.innerHTML = "";
 
-   //Skriver ut filtrerade kurskoder
-   courses.forEach (course => {
-    codeEl.innerHTML += `<li>${course.code}</li>`;
-})
+    //Skriver ut filtrerade kurskoder
+    courses.forEach(course => {
+        codeEl.innerHTML += `<li>${course.code}</li>`;
+    })
 
-   //Skriver ut filtrerade kursnamn
-courses.forEach (course => {
-    courseEl.innerHTML += `<li>${course.coursename}</li>`;
-})
+    //Skriver ut filtrerade kursnamn
+    courses.forEach(course => {
+        courseEl.innerHTML += `<li>${course.coursename}</li>`;
+    })
 
-   //Skriver ut filtrerade progressioner
-courses.forEach (course => {
-    progressionEl.innerHTML += `<li>${course.progression}</li>`;
-})
+    //Skriver ut filtrerade progressioner
+    courses.forEach(course => {
+        progressionEl.innerHTML += `<li>${course.progression}</li>`;
+    })
 
 }
 
@@ -116,8 +116,8 @@ codeElTitle.onclick = () => {
 
 //Vid klick på kursnamn-titel körs en sortering av kursnamn
 courseElTitle.onclick = () => {
-        document.querySelector("#kursnamn_titel"), addEventListener("onclick", sortedCoursesName(courses));
-        printSorted(courses);
+    document.querySelector("#kursnamn_titel"), addEventListener("onclick", sortedCoursesName(courses));
+    printSorted(courses);
 }
 
 //Vid klick på progression-titel körs en sortering av progression
@@ -128,24 +128,24 @@ progressionElTitle.onclick = () => {
 
 //Sorterar kurskoder
 function sortedCoursesCode(courses) {
-courses.sort((a,b) => a.code > b.code ? 1 : -1);
-printSorted(courses);
+    courses.sort((a, b) => a.code > b.code ? 1 : -1);
+    printSorted(courses);
 }
 
 //Sorterar kursnamn
 function sortedCoursesName(courses) {
-    courses.sort((a,b) => a.coursename > b.coursename ? 1 : -1);
+    courses.sort((a, b) => a.coursename > b.coursename ? 1 : -1);
     printSorted(courses);
-    }
+}
 
-    //Sorterar progression
-    function sortedProgression(courses) {
-        courses.sort((a,b) => a.progression > b.progression ? 1 : -1);
-        printSorted(courses);
-        }
+//Sorterar progression
+function sortedProgression(courses) {
+    courses.sort((a, b) => a.progression > b.progression ? 1 : -1);
+    printSorted(courses);
+}
 
 
-        //Skriver ut de sorterade listorna
+//Skriver ut de sorterade listorna
 function printSorted(courses) {
     const codeEl = document.querySelector("#kurskod");
     const courseEl = document.querySelector("#kursnamn");
@@ -153,21 +153,21 @@ function printSorted(courses) {
 
     codeEl.innerHTML = "";
     courseEl.innerHTML = "";
-   progressionEl.innerHTML = "";
+    progressionEl.innerHTML = "";
 
-   //Skriver ut filtrerade kurskoder
-   courses.forEach (course => {
-    codeEl.innerHTML += `<li>${course.code}</li>`;
-})
+    //Skriver ut filtrerade kurskoder
+    courses.forEach(course => {
+        codeEl.innerHTML += `<li>${course.code}</li>`;
+    })
 
-   //Skriver ut filtrerade kursnamn
-courses.forEach (course => {
-    courseEl.innerHTML += `<li>${course.coursename}</li>`;
-})
+    //Skriver ut filtrerade kursnamn
+    courses.forEach(course => {
+        courseEl.innerHTML += `<li>${course.coursename}</li>`;
+    })
 
-   //Skriver ut filtrerade progressioner
-courses.forEach (course => {
-    progressionEl.innerHTML += `<li>${course.progression}</li>`;
-})
+    //Skriver ut filtrerade progressioner
+    courses.forEach(course => {
+        progressionEl.innerHTML += `<li>${course.progression}</li>`;
+    })
 }
 
